@@ -94,15 +94,17 @@ function randomIntBetweenTwo(max, min){
     return randomInt
 }
 
+
 // adding Google maps
 let map
 
 function initMap(){
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
-            lat: mission.coordinates.longitude,
-            lon: mission.coordinates.longitude
+            lat: mission.coordinates.latitude,
+            lng: mission.coordinates.longitude
         },
         zoom: 8
     })
+
 }
