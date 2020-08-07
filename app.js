@@ -72,3 +72,24 @@ function identificationNumber(randomInt, teamMembers){
 agent007.id = identificationNumber(randomInt, teamMembers)
 console.log('Identification id : ' + agent007.id)
 
+const mission = {}
+mission.coordinates = getCoordinates()
+console.log('Your mission details: ' ,mission);
+
+function getCoordinates(){
+    const latitude = +randomIntBetweenTwo(90, -90).toFixed(6)
+    const longitude = +randomIntBetweenTwo(180, 0).toFixed(6)
+    let coordinates = {}
+
+    coordinates.latitude = latitude
+    coordinates.longitude = longitude
+    console.log('coordinates:',coordinates);
+    return coordinates
+}
+
+function randomIntBetweenTwo(max, min){
+    let randomInt = Math.random()*(max-min)+1
+    randomInt > max ? (randomInt = max - randomInt) : randomInt
+    console.log('randomInt: ',randomInt);
+    return randomInt
+}
