@@ -1,6 +1,6 @@
 let name = 'James'
 const lastName = 'Bond'
-var status = 'agent'
+let status = 'agent'
 let id = '00' + 7
 
 alert('Hello, ' + status + ' ' + id + ' ' +
@@ -40,11 +40,26 @@ agents.push(agent007)
 console.log('Initialization have been completed!')
 
 const wannaSeeYourTeam = prompt('Show all teammates: ?')
-wannaSeeYourTeam ==='yes' ? showTeammates() : console.log('Mission failed!')
+wannaSeeYourTeam ==='yes' ? accessTeamDetails() : console.log('Mission failed!')
 
-function showTeammates() {
-    agents.forEach(t => {
-        console.log('Agent ' + t.name + ' : ')
-        console.log(t)
-    });
+function accessTeamDetails(){
+    const secretPhrase = prompt('Enter your secret phrase, agent '
+        + agent007.name + ' :')
+    const permission = (secretPhrase === agent007.phrase)
+    console.log('permission = '+ permission)
+
+    showTheTeam(permission)
 }
+
+function showTheTeam(permission){
+    if(permission){
+        for (let agent of agents) {
+            console.log(agent.status + ' : ')
+            console.log(agent)
+        }
+    } else
+        console.log('You have no rights, sorry!')
+}
+
+
+
