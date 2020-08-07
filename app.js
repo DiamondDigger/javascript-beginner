@@ -77,8 +77,8 @@ mission.coordinates = getCoordinates()
 console.log('Your mission details: ' ,mission);
 
 function getCoordinates(){
-    const latitude = +randomIntBetweenTwo(90, -90).toFixed(6)
-    const longitude = +randomIntBetweenTwo(180, 0).toFixed(6)
+    const latitude = +randomIntBetweenTwo(90, -90).toFixed(3)
+    const longitude = +randomIntBetweenTwo(180, 0).toFixed(3)
     let coordinates = {}
 
     coordinates.latitude = latitude
@@ -92,4 +92,17 @@ function randomIntBetweenTwo(max, min){
     randomInt > max ? (randomInt = max - randomInt) : randomInt
     console.log('randomInt: ',randomInt);
     return randomInt
+}
+
+// adding Google maps
+let map
+
+function initMap(){
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+            lat: mission.coordinates.longitude,
+            lon: mission.coordinates.longitude
+        },
+        zoom: 8
+    })
 }
