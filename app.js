@@ -61,5 +61,14 @@ function showTheTeam(permission){
         console.log('You have no rights, sorry!')
 }
 
+const randomInt = Math.random()
+const teamMembers = agents.length
+function identificationNumber(randomInt, teamMembers){
+    const result = Math.floor(randomInt*(teamMembers-1) + 1)
+    console.log(result);
+    return result
+}
 
+agent007.id = identificationNumber(randomInt, teamMembers)
+console.log('Identification id : ' + agent007.id)
 
