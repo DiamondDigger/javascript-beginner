@@ -121,6 +121,38 @@ const timeout = setInterval(function () {
     }
 }, 1000)
 
+const currentDate = (msg) => {
+    console.log(Date.now(), msg)
+}
 
+currentDate('somewhere on Earth')
 
+const multAllNum = (...all) =>{
+    let res = 1
+    for (let num of all){
+        res *= num
+    }
+    console.log(`The result is ${res}`)
+}
 
+multAllNum(1,2,3,4,5,6,7,8,9,10)
+
+const defaultSumOfTwoNum = (a = 1, b = 4) => {
+    return console.log(a + b)
+}
+
+defaultSumOfTwoNum()
+defaultSumOfTwoNum(2,19)
+
+const personDetails = (name) => {
+    return function(surName) {
+        console.log(`Your name is - ${name}, and let me see..Surname is ${surName}`)
+    }
+}
+
+const jackInfo = personDetails('Jack')
+console.log(jackInfo())
+console.log(jackInfo('Bean'))
+
+jackInfo()
+jackInfo('Mortal')
