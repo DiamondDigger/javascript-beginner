@@ -40,31 +40,33 @@ agents.push(agent007)
 console.log('Initialization have been completed!')
 
 const wannaSeeYourTeam = prompt('Show all teammates: ?')
-wannaSeeYourTeam ==='yes' ? accessTeamDetails() : console.log('Mission failed!')
+wannaSeeYourTeam === 'y' ? accessTeamDetails() : console.log('Mission failed!')
 
-function accessTeamDetails(){
+function accessTeamDetails() {
     const secretPhrase = prompt('Enter your secret phrase, agent '
         + agent007.name + ' :')
     const permission = (secretPhrase === agent007.phrase)
-    console.log('permission = '+ permission)
-
+    console.log('permission = ' + permission)
     showTheTeam(permission)
+
 }
 
-function showTheTeam(permission){
-    if(permission){
+function showTheTeam(permission) {
+    if (permission) {
         for (let agent of agents) {
             console.log(agent.status + ' : ')
             console.log(agent)
         }
     } else
         console.log('You have no rights, sorry!')
+    return ' '
 }
 
 const randomInt = Math.random()
 const teamMembers = agents.length
-function identificationNumber(randomInt, teamMembers){
-    const result = Math.floor(randomInt*(teamMembers-1) + 1)
+
+function identificationNumber(randomInt, teamMembers) {
+    const result = Math.floor(randomInt * (teamMembers - 1) + 1)
     console.log(result);
     return result
 }
@@ -74,23 +76,24 @@ console.log('Identification id : ' + agent007.id)
 
 const mission = {}
 mission.coordinates = getCoordinates()
-console.log('Your mission details: ' ,mission);
+console.log('Your mission details: ', mission);
 
-function getCoordinates(){
+// random coordinates for map
+function getCoordinates() {
     const latitude = +randomIntBetweenTwo(90, -90).toFixed(3)
     const longitude = +randomIntBetweenTwo(180, 0).toFixed(3)
     let coordinates = {}
 
     coordinates.latitude = latitude
     coordinates.longitude = longitude
-    console.log('coordinates:',coordinates);
+    console.log('coordinates:', coordinates);
     return coordinates
 }
 
-function randomIntBetweenTwo(max, min){
-    let randomInt = Math.random()*(max-min)+1
+function randomIntBetweenTwo(max, min) {
+    let randomInt = Math.random() * (max - min) + 1
     randomInt > max ? (randomInt = max - randomInt) : randomInt
-    console.log('randomInt: ',randomInt);
+    console.log('randomInt: ', randomInt);
     return randomInt
 }
 
@@ -98,7 +101,7 @@ function randomIntBetweenTwo(max, min){
 // adding Google maps
 let map
 
-function initMap(){
+function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
             lat: mission.coordinates.latitude,
@@ -106,5 +109,18 @@ function initMap(){
         },
         zoom: 8
     })
-
 }
+
+// timeout for function
+let count = 0
+const timeout = setInterval(function () {
+    console.log(`..${count++}`)
+    if (count === agents.length+1) {
+        clearInterval(timeout)
+        console.log('Scanning is done!')
+    }
+}, 1000)
+
+
+
+
