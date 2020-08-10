@@ -156,3 +156,31 @@ console.log(jackInfo('Bean'))
 
 jackInfo()
 jackInfo('Mortal')
+
+const resources = ['gold', 'wood']
+console.log(resources)
+
+resources.push('water')
+console.log(resources)
+
+resources.unshift('minerals')
+console.log(resources)
+resources.reverse()
+console.log(resources)
+
+const shiftItem = resources.shift()
+console.log(resources, shiftItem)
+
+const popItem = resources.pop()
+console.log(resources,popItem)
+
+const text = '!esaelp ,tekcaj ruoy em eviG'
+console.log(text.split('').reverse().join(''))
+
+const personNick = 'Ki'
+const personIndex = agents.findIndex(agent => agent.nick === personNick)
+console.log(agents[personIndex].status + ' ' + agents[personIndex].name)
+
+const agentWithId = agents.find(agent => agent.hasOwnProperty('id'))
+console.log('Agent with id is - ',agentWithId)
+
