@@ -184,3 +184,14 @@ console.log(agents[personIndex].status + ' ' + agents[personIndex].name)
 const agentWithId = agents.find(agent => agent.hasOwnProperty('id'))
 console.log('Agent with id is - ',agentWithId)
 
+const nameToUpperCase = array => {
+    if (array.hasOwnProperty('name')) {
+        array.name = array.name.toUpperCase()
+        console.log('Successfully changed name!')
+    } else {
+        return -1
+    }
+}
+const agentDetails = agents.map(nameToUpperCase)
+console.log(agentDetails)
+console.log(agents)
