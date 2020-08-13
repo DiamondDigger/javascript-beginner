@@ -16,7 +16,8 @@ const agent001 = {
     lastName: 'Di',
     status: 'coordinator',
     nick: 'Dom',
-    phrase: 'come here'
+    phrase: 'come here',
+    budget: 1500
 }
 agents.push(agent001)
 
@@ -25,7 +26,8 @@ const agent002 = {
     lastName: 'Harper',
     status: 'assistant',
     nick: 'Ki',
-    phrase: 'ti hua ni to'
+    phrase: 'ti hua ni to',
+    budget: 2500
 }
 agents.push(agent002)
 
@@ -35,6 +37,7 @@ agent007.lastName = lastName
 agent007.nick = 'Li'
 agent007.phrase = phrase
 agent007.status = 'undercover agent'
+agent007.budget = 5000
 agents.push(agent007)
 
 console.log('Initialization have been completed!')
@@ -238,3 +241,18 @@ console.log('password from changed cipher : ', changedPas)
 
 const arrayOfNum = [1,2,3,4,5,6,7,8,9,10]
 console.log(arrayOfNum.filter(num => num > 5).map(num => num + 1))
+
+const allMoney = agents.reduce((acc, person) => {
+    acc += person.budget
+    return acc
+},0)
+
+console.log('All money in operation: ', allMoney + ' $')
+
+const bondMoney = agents.filter(agent => agent.name.toLowerCase() === 'call' || agent.name.toLowerCase() === 'mylen')
+    .reduce((acc, agent)=> {
+        acc += agent.budget
+        return acc
+    }, 0)
+
+console.log('Money of active agents: ', bondMoney +' $')
