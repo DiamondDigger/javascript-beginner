@@ -114,6 +114,14 @@ function initMap() {
     })
 }
 
+function hndlr(response) {
+    for (var i = 0; i < response.items.length; i++) {
+        var item = response.items[i];
+        // in production code, item.htmlTitle should have the HTML entities escaped.
+        document.getElementById("content").innerHTML += "<br>" + item.htmlTitle;
+    }
+}
+
 // timeout for function
 let count = 0
 const timeout = setInterval(function () {
@@ -247,7 +255,7 @@ const allMoney = agents.reduce((acc, person) => {
     return acc
 },0)
 
-console.log('All money in operation: ', allMoney + ' $')
+console.log('All money in operation: ', allMoney + ' $');
 
 const bondMoney = agents.filter(agent => agent.name.toLowerCase() === 'call' || agent.name.toLowerCase() === 'mylen')
     .reduce((acc, agent)=> {
