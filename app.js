@@ -80,8 +80,8 @@ console.log('Your mission details: ', mission);
 
 // random coordinates for map
 function getCoordinates() {
-    const latitude = +randomIntBetweenTwo(90, -90).toFixed(3)
-    const longitude = +randomIntBetweenTwo(180, 0).toFixed(3)
+    const latitude = +randomIntBetweenTwo(-90, 90).toFixed(3)
+    const longitude = +randomIntBetweenTwo(0, 180).toFixed(3)
     let coordinates = {}
 
     coordinates.latitude = latitude
@@ -90,7 +90,7 @@ function getCoordinates() {
     return coordinates
 }
 
-function randomIntBetweenTwo(max, min) {
+function randomIntBetweenTwo(min, max) {
     let randomInt = Math.random() * (max - min) + 1
     randomInt > max ? (randomInt = max - randomInt) : randomInt
     console.log('randomInt: ', randomInt);
@@ -137,6 +137,7 @@ const multAllNum = (...all) =>{
 
 multAllNum(1,2,3,4,5,6,7,8,9,10)
 
+//default values
 const defaultSumOfTwoNum = (a = 1, b = 4) => {
     return console.log(a + b)
 }
@@ -150,6 +151,7 @@ const personDetails = (name) => {
     }
 }
 
+//locking
 const jackInfo = personDetails('Jack')
 console.log(jackInfo())
 console.log(jackInfo('Bean'))
@@ -157,6 +159,7 @@ console.log(jackInfo('Bean'))
 jackInfo()
 jackInfo('Mortal')
 
+// array methods
 const resources = ['gold', 'wood']
 console.log(resources)
 
@@ -174,9 +177,11 @@ console.log(resources, shiftItem)
 const popItem = resources.pop()
 console.log(resources,popItem)
 
+// make text recursive
 const text = '!esaelp ,tekcaj ruoy em eviG'
 console.log(text.split('').reverse().join(''))
 
+//array find, findIndex
 const personNick = 'Ki'
 const personIndex = agents.findIndex(agent => agent.nick === personNick)
 console.log(agents[personIndex].status + ' ' + agents[personIndex].name)
@@ -184,14 +189,53 @@ console.log(agents[personIndex].status + ' ' + agents[personIndex].name)
 const agentWithId = agents.find(agent => agent.hasOwnProperty('id'))
 console.log('Agent with id is - ',agentWithId)
 
-const nameToUpperCase = array => {
-    if (array.hasOwnProperty('name')) {
-        array.name = array.name.toUpperCase()
-        console.log('Successfully changed name!')
-    } else {
-        return -1
+let nameToUpperCase = array => {
+    let count = 0;
+    for (let person of array) {
+        count++
+        if (person.hasOwnProperty('name')) {
+            person.name = person.name.toUpperCase();
+            console.log('Successfully changed name!', person.name);
+            while (count !== array.length) {
+                return person;
+            }
+        } else {
+            return -15;
+        }
     }
 }
-const agentDetails = agents.map(nameToUpperCase)
-console.log(agentDetails)
-console.log(agents)
+let agentDetails = nameToUpperCase(agents)
+console.log('agentDetails : ',agentDetails)
+console.log('agents : ',agents)
+
+const secretNumbers = [randomIntBetweenTwo(1,5),
+    randomIntBetweenTwo(1,7),randomIntBetweenTwo(1,9)]
+
+const roundNum = (num) => (num * 10).toFixed(0)
+const cipher = secretNumbers.map(num => roundNum(num))
+
+console.log('base of cipher :  ', secretNumbers)
+console.log('cipher is : ', cipher)
+console.log(cipher.join('-'))
+
+const getStringFromNum = array => {
+    const changedArray = array.map(num => String.fromCharCode(num))
+    for (let num of changedArray) {
+            console.log('from getStringFromNum',num)
+        }
+        return changedArray
+}
+
+const password = cipher.map(num => String.fromCharCode(num))
+console.log('password from cipher',password)
+
+const changedCipher = cipher
+    .map(num => num < 50 ? (num * 2) : num * 1)
+
+console.log('changedCipher is : ',changedCipher);
+
+const changedPas = getStringFromNum(changedCipher)
+console.log('password from changed cipher : ', changedPas)
+
+const arrayOfNum = [1,2,3,4,5,6,7,8,9,10]
+console.log(arrayOfNum.filter(num => num > 5).map(num => num + 1))
