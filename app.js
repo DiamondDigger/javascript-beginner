@@ -190,19 +190,18 @@ const agentWithId = agents.find(agent => agent.hasOwnProperty('id'))
 console.log('Agent with id is - ',agentWithId)
 
 let nameToUpperCase = array => {
-    let count = 0;
+    let count = 3;
     for (let person of array) {
+        console.log('array.length = ',array.length);
         count++
         if (person.hasOwnProperty('name')) {
             person.name = person.name.toUpperCase();
             console.log('Successfully changed name!', person.name);
-            while (count !== array.length) {
-                return person;
-            }
         } else {
             return -15;
         }
     }
+    return array
 }
 let agentDetails = nameToUpperCase(agents)
 console.log('agentDetails : ',agentDetails)
