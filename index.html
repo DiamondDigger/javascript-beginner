@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>JavaScript</title>
+<!--    bootstrap css-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
     <style>
         #map {
             height: 100%;
@@ -13,36 +18,58 @@
             margin: 0;
             padding: 0;
         }
+        div {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+        }
     </style>
 </head>
 <body>
 
-<h1>Hello World!</h1>
-<div id="app">
-
+<button type="button" class="btn btn-warning" onclick="setBackground()">Show me !</button>
+<button type="button" class="btn btn-outline-secondary">Secondary</button>
+<div id="object">
 </div>
-<div id="map">
-    <h1>You're the first </h1>
-</div>
+<!--<div id="app">-->
 
-<div id="content">
-    Some content
-</div>
+<!--</div>-->
+<!--<div id="map">-->
+<!--    <h1>You're the first </h1>-->
+<!--</div>-->
+
+<!--<div id="content">-->
+<!--    Some content-->
+<!--</div>-->
 
 
-<script src="app.js">
+<script src="object.js">
+</script>
+<script>
+function setBackground(){
+document.getElementById("object").style.backgroundImage = "url('fbiBack.jpg')"
+}
 </script>
 
-<!--google map api-->
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
-        defer
-></script>
+<!--&lt;!&ndash;google map api&ndash;&gt;-->
+<!--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>-->
+<!--<script-->
+<!--        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"-->
+<!--        defer-->
+<!--&gt;</script>-->
 
-<!--search engine api-->
-<script src="https://www.googleapis.com/customsearch/v1?key=AIzaSyCJ1FyRItDiyi8VOI0gfWbbTCxYv22nElw&cx=017576662512468239146:omuauf_lfve&q=cars&callback=hndlr">
-</script>
+<!--&lt;!&ndash;search engine api&ndash;&gt;-->
+<!--<script src="https://www.googleapis.com/customsearch/v1?key=AIzaSyCJ1FyRItDiyi8VOI0gfWbbTCxYv22nElw&cx=017576662512468239146:omuauf_lfve&q=cars&callback=hndlr">-->
+<!--</script>-->
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
 </body>
