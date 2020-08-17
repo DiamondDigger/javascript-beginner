@@ -5,7 +5,7 @@ const policeman = {
     car: true,
     states: ['Mx', 'Br', 'St'],
     'computed prop': 'Computed Value',
-    ['ID_token_' + (5 / 10 + 431).toFixed(0)] : 'egct#245',
+    ['ID_token_' + (5 / 10 + 431).toFixed(0)]: 'egct#245',
     greet() {
         console.log('Im officer Jack, can I help you?')
     }
@@ -32,16 +32,23 @@ for (let key in policeman) {
 }
 
 console.log('From Object method')
-Object.keys(policeman).forEach((key)=>{
+Object.keys(policeman).forEach((key) => {
     console.log('Key: ', key);
     console.log('Value: ', policeman[key]);
 })
 
 const logger = {
-    keys(){
+    keys() {
         console.log('Object keys: ', Object.keys(this))
+    },
+    keysAndValues() {
+        const keys = Object.keys(this)
+        keys.forEach((key) => {
+            console.log(`${key} : ${this[key]}`)
+        })
     }
 }
+
 
 console.log('From .bind')
 const bound = logger.keys.bind(policeman);
@@ -50,4 +57,8 @@ bound()
 console.log('From .call')
 logger.keys.call(policeman)
 
+console.log('Keys and Values of policeman:')
+logger.keysAndValues.call(policeman)
+console.log('Keys and Values of logger:')
+logger.keysAndValues.call(logger)
 
