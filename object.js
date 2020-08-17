@@ -23,3 +23,12 @@ policeman.id = undefined
 console.log('set policeman.id = undefined');
 const {name, id: idNumber = 313, states} = policeman
 console.log(name, idNumber, states);
+
+for (let key in policeman) {
+    if (policeman.hasOwnProperty(key)) {
+        console.log('Key: ', key);
+        console.log('Value: ', policeman[key]);
+    }
+}
+
+
