@@ -37,4 +37,17 @@ Object.keys(policeman).forEach((key)=>{
     console.log('Value: ', policeman[key]);
 })
 
+const logger = {
+    keys(){
+        console.log('Object keys: ', Object.keys(this))
+    }
+}
+
+console.log('From .bind')
+const bound = logger.keys.bind(policeman);
+bound()
+
+console.log('From .call')
+logger.keys.call(policeman)
+
 
