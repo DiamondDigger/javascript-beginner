@@ -31,4 +31,10 @@ for (let key in policeman) {
     }
 }
 
+console.log('From Object method')
+Object.keys(policeman).forEach((key)=>{
+    console.log('Key: ', key);
+    console.log('Value: ', policeman[key]);
+})
+
 
