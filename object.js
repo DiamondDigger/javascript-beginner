@@ -46,6 +46,21 @@ const logger = {
         keys.forEach((key) => {
             console.log(`${key} : ${this[key]}`)
         })
+    },
+    withParams(top = false, between = false, bottom = false){
+        if (top) {
+            console.log('-----------Start-----------')
+        }
+        Object.keys(this).forEach((key, index, array) => {
+            console.log(`${key} : ${this[key]}`)
+            if (between && index !== array.length - 1) {
+                console.log('----------------------')
+            }
+        })
+
+        if (bottom) {
+            console.log('-----------Bottom-----------')
+        }
     }
 }
 
@@ -62,3 +77,7 @@ logger.keysAndValues.call(policeman)
 console.log('Keys and Values of logger:')
 logger.keysAndValues.call(logger)
 
+console.log('With params from .call :')
+logger.withParams.call(policeman,true, true, true)
+console.log('With params from .apply: ')
+logger.withParams.apply(policeman,[true, true, true])
