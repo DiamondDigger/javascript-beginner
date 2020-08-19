@@ -58,12 +58,16 @@ anotherHeadingH2.addEventListener('dblclick', () => {
 
 let countOfStyleChangingInAd = 0
 const textFromH2 = lastHeadingH2.textContent
-
+let discount = 10
 lastHeadingH2.onmouseover = () => {
     console.log('Text from last h2 : ', textFromH2)
     countOfStyleChangingInAd++
     if (countOfStyleChangingInAd !== 0 && countOfStyleChangingInAd % 5 === 0) {
-        alert('Ok, we can suggest you special offer only right now - 10% discount!!!')
+        alert(`Ok, we can suggest you special offer only right now - ${discount}% discount!!!`)
+            discount++
+        if (discount > 50) {
+            discount = 5
+        }
     }
     if (lastHeadingH2.style.color === 'yellow') {
         lastHeadingH2.style.color = 'black'
