@@ -1,30 +1,36 @@
 const domElement = document.getElementById('dom')
 const headingH2 = document.querySelector('h2')
-const nextHeadingH2 = headingH2.nextElementSibling
 const h2List = document.querySelectorAll('h2')
+const anotherHeadingH2 = h2List[1]
 
-console.dir(domElement)
+console.dir(headingH2)
 console.log(domElement)
 
 console.log('domElement.innerHTML: ', domElement.innerHTML)
 console.log('domElement.innerText: ', domElement.innerText)
 
-console.log('querySelectorAll("h2"): ', h2List )
+console.log('domElement: ', domElement)
 console.log('headingH2: ', headingH2)
-console.log('nextHeadingH2: ', nextHeadingH2)
+console.log('nextHeadingH2: ', anotherHeadingH2)
+console.log('querySelectorAll("h2"): ', h2List )
 
 setTimeout(() => {
     addStylesTo(h2List[h2List.length-1])
 }, 2500)
 
 setTimeout(() => {
-    addStylesTo(headingH2)
+    addStylesTo(anotherHeadingH2,'Hmm..It`s looks like..', 'red', '3rem')
 }, 5000)
 
-function addStylesTo(node) {
-    // node.textContent = 'Welcome here. Lets try our Google Search Engine!'
-    node.style.color = 'blue'
+setTimeout(() => {
+    addStylesTo(headingH2, 'we`ve done it!!!','yellow', '2rem')
+}, 7000)
+
+function addStylesTo(node, text = 'this is best place for your ad!!', color = 'yellow', fontSize) {
+    node.textContent = text
+    node.style.color = color
     node.style.textAlign = 'center'
-    node.style.backgroundColor = 'yellow'
-    node.style.padding = '2rem'
+    node.style.backgroundColor = 'black'
+    node.style.padding = '1rem'
+    node.style.fontSize = fontSize
 }
