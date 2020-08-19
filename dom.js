@@ -2,6 +2,7 @@ const domElement = document.getElementById('dom')
 const headingH2 = document.querySelector('h2')
 const h2List = document.querySelectorAll('h2')
 const anotherHeadingH2 = h2List[1]
+const lastHeadingH2 = h2List[h2List.length -1]
 
 console.dir(headingH2)
 console.log(domElement)
@@ -15,7 +16,7 @@ console.log('nextHeadingH2: ', anotherHeadingH2)
 console.log('querySelectorAll("h2"): ', h2List)
 
 setTimeout(() => {
-    addStylesTo(h2List[h2List.length - 1])
+    addStylesTo(lastHeadingH2)
 }, 2500)
 
 setTimeout(() => {
@@ -47,10 +48,24 @@ headingH2.onclick = () => {
 
 anotherHeadingH2.addEventListener('dblclick', () => {
     if (anotherHeadingH2.style.color === 'red') {
-        anotherHeadingH2.style.color = 'black';
-        anotherHeadingH2.style.backgroundColor = 'white';
+        anotherHeadingH2.style.color = 'black'
+        anotherHeadingH2.style.backgroundColor = 'white'
     } else {
         anotherHeadingH2.style.color = 'red'
-        anotherHeadingH2.style.backgroundColor = 'black'
-    }
+        anotherHeadingH2.style.backgroundColor = 'black'}
 })
+
+const text = lastHeadingH2.textContent
+lastHeadingH2.onclick = () => {
+    console.log('Text from last h2 : ', text)
+    if (lastHeadingH2.style.color === 'yellow') {
+        lastHeadingH2.style.color = 'black'
+        lastHeadingH2.style.backgroundColor = 'white'
+        lastHeadingH2.textContent = 'Only 10$ per day! Only for you and only today!'
+    } else {
+        lastHeadingH2.style.color = 'yellow'
+        lastHeadingH2.style.backgroundColor = 'black'
+        lastHeadingH2.textContent = text
+        console.log('Text from last h2 after changing : ', lastHeadingH2.textContent)
+    }
+}
