@@ -56,15 +56,22 @@ anotherHeadingH2.addEventListener('dblclick', () => {
     }
 })
 
+let countOfStyleChangingInAd = 0
 const textFromH2 = lastHeadingH2.textContent
+
 lastHeadingH2.onmouseover = () => {
     console.log('Text from last h2 : ', textFromH2)
+    countOfStyleChangingInAd++
+    if (countOfStyleChangingInAd !== 0 && countOfStyleChangingInAd % 5 === 0) {
+        alert('Ok, we can suggest you special offer only right now - 10% discount!!!')
+    }
     if (lastHeadingH2.style.color === 'yellow') {
         lastHeadingH2.style.color = 'black'
         lastHeadingH2.style.backgroundColor = 'white'
         lastHeadingH2.textContent = 'Only 10$ per day! Only for you and only today!'
     }
 }
+console.log('countOfStyleChangingInAd: ',countOfStyleChangingInAd)
 
 lastHeadingH2.onmouseout = () => {
     lastHeadingH2.style.color = 'yellow'
@@ -75,4 +82,4 @@ lastHeadingH2.onmouseout = () => {
 
 headingH2.oncontextmenu = () => {
     alert('Really ?? Are you kidding me?!')
-}
+};
