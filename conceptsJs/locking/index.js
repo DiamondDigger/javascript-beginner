@@ -20,3 +20,20 @@ console.log('1+19=', addOne(19))
 console.log('1+0=',addOne(0))
 console.log('10+34=',addTen(34))
 console.log('10+(-2)=',addTen(-2))
+
+function urlGenerator(domain){
+    return function(url){
+        console.log(`https://${url}.${domain}`)
+    }
+}
+
+const comUrl = urlGenerator('com')
+const ruUrl = urlGenerator('ru')
+
+comUrl('amazon')
+comUrl('facebook')
+
+ruUrl('yandex')
+ruUrl('yahoo')
+
+ruUrl('amazon')
