@@ -4,16 +4,14 @@ const h2List = document.querySelectorAll('h2')
 const anotherHeadingH2 = h2List[1]
 const lastHeadingH2 = h2List[h2List.length - 1]
 
-console.dir(headingH2)
-console.log(domElement)
+const link = headingH2.childNodes[0]
 
-console.log('domElement.innerHTML: ', domElement.innerHTML)
-console.log('domElement.innerText: ', domElement.innerText)
-
-console.log('domElement: ', domElement)
-console.log('headingH2: ', headingH2)
-console.log('nextHeadingH2: ', anotherHeadingH2)
-console.log('querySelectorAll("h2"): ', h2List)
+link.addEventListener('click', (event) => {
+    event.preventDefault()
+    console.log('Click on link', event.target.getAttribute('href'))
+    const url = event.target.getAttribute('href')
+    window.location = url
+})
 
 setTimeout(() => {
     addStylesTo(lastHeadingH2)
@@ -24,7 +22,7 @@ setTimeout(() => {
 }, 5000)
 
 setTimeout(() => {
-    addStylesTo(headingH2, 'we`ve done it!!!', 'yellow', '2rem')
+    addStylesTo(headingH2.childNodes[0], 'we`ve done it!!!', 'yellow', '2rem')
 }, 7000)
 
 function addStylesTo(node, text = 'this is best place for your ad!!', color = 'yellow', fontSize) {
@@ -34,6 +32,8 @@ function addStylesTo(node, text = 'this is best place for your ad!!', color = 'y
     node.style.backgroundColor = 'black'
     node.style.padding = '1rem'
     node.style.fontSize = fontSize
+    node.style.width = '100%'
+    node.style.display = 'block'
 }
 
 headingH2.onclick = () => {
@@ -60,11 +60,10 @@ let countOfStyleChangingInAd = 0
 const textFromH2 = lastHeadingH2.textContent
 let discount = 10
 lastHeadingH2.onmouseover = () => {
-    console.log('Text from last h2 : ', textFromH2)
     countOfStyleChangingInAd++
     if (countOfStyleChangingInAd !== 0 && countOfStyleChangingInAd % 5 === 0) {
         alert(`Ok, we can suggest you special offer only right now - ${discount}% discount!!!`)
-            discount++
+        discount++
         if (discount > 50) {
             discount = 5
         }
@@ -75,13 +74,11 @@ lastHeadingH2.onmouseover = () => {
         lastHeadingH2.textContent = 'Only 10$ per day! Only for you and only today!'
     }
 }
-console.log('countOfStyleChangingInAd: ',countOfStyleChangingInAd)
 
 lastHeadingH2.onmouseout = () => {
     lastHeadingH2.style.color = 'yellow'
     lastHeadingH2.style.backgroundColor = 'black'
     lastHeadingH2.textContent = textFromH2
-    console.log('Text from last h2 after changing : ', lastHeadingH2.textContent)
 }
 
 headingH2.oncontextmenu = () => {
