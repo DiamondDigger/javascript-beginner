@@ -10,3 +10,5 @@ Object.prototype.sayHello = function(){
     console.log('Hello')
 }
 
+const human = Object.create(alien)
+
