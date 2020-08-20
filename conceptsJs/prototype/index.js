@@ -11,4 +11,8 @@ Object.prototype.sayHello = function(){
 }
 
 const human = Object.create(alien)
+human.name = 'Baculuy'
+
+const str = new String('I come here with my own mission.')
+
 
