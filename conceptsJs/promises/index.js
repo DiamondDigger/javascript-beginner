@@ -1,7 +1,6 @@
 console.log('Requesting data...')
 
-setTimouts
-setTimeout(()=>{
+setTimeout(() => {
     console.log('Preparing data...')
 
     const backendData = {
@@ -10,10 +9,10 @@ setTimeout(()=>{
         status: 'working'
     }
 
-    setTimeout(()=>{
+    setTimeout(() => {
         backendData.modified = true
         console.log('Data received', backendData)
-    } ,2000)
+    }, 2000)
 
 }, 5000)
 
@@ -45,9 +44,16 @@ p.then((data) => {
 
 const sleep = ms => {
     return new Promise(resolve => {
-        resolve(ms)
-    },ms)
+        setTimeout(()=>{
+            resolve(ms)
+        },ms)
+    })
 }
 
-sleep(2000).then(ms => console.log(`after ${ms/1000} sec`))
-sleep(3000).then(ms => console.log(`after ${ms/1000} sec`))
+sleep(2000).then(ms => console.log(`after ${ms / 1000} sec`))
+sleep(3000).then(ms => console.log(`after ${ms / 1000} sec`))
+
+Promise.all([sleep(2000), sleep(5000)])
+    .then(() => console.log('after all promises'))
+Promise.race([sleep(2000), sleep(5000)])
+    .then(() => console.log('after fastest promise'))
