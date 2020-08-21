@@ -27,10 +27,30 @@ const anotherAnimal = new Animal({
 
 class Cat extends Animal{
     static type = 'CAT'
+
+    constructor(options){
+        super(options)
+        this.color = options.color
+    }
+
+    voice() {
+        super.voice()
+        console.log('I am big angry cat!')
+    }
+
+    get ageInfo(){
+        return this.age * 7
+    }
+
+    set ageInfo(newAge){
+        this.age = newAge
+        console.log(this.age)
+    }
 }
 
 const cat = new Cat({
     name: 'Cat',
     age: 12,
-    hasTail: true
+    hasTail: true,
+    color: 'black'
 })
