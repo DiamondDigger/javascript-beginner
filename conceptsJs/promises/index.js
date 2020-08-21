@@ -30,13 +30,12 @@ const p = new Promise((resolve, reject) => {
 })
 
 p.then((data) => {
-    const p2 = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             data.modified = true
             resolve(data)
         },2000)
     })
-    p2.then((clientData)=>{
-        console.log('Data received', clientData)
-    })
+}).then((clientData)=>{
+    console.log('Data received', clientData)
 })
