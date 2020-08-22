@@ -54,3 +54,50 @@ const cat = new Cat({
     hasTail: true,
     color: 'black'
 })
+
+class Component{
+    constructor(selector){
+        this.$el = document.querySelector(selector)
+        if (!this.$el) {
+            this.$el = document.createElement('div')
+            this.$el.setAttribute('id', selector)
+            if (document.querySelectorAll('div').length !== 0) {
+                document.body.insertBefore(this.$el, document.querySelector('div'))
+            } else {
+                document.body.append(this.$el)
+            }
+        }
+    }
+
+    hide(){
+        this.$el.style.display = 'none'
+    }
+
+    show(){
+        this.$el.style.display = 'block'
+    }
+}
+
+class Box extends Component{
+    constructor(options){
+        super(options.selector)
+        this.$el.style.width = this.$el.style.height = options.size + 'px'
+        this.$el.style.backgroundColor = options.color
+    }
+}
+
+const box1 = new Box({
+    selector: '#box1',
+    size: 100,
+    color: 'blue'
+})
+const box2 = new Box({
+    selector: '#box2',
+    size: 140,
+    color: 'yellow'
+})
+const box3 = new Box({
+    selector: '#box2',
+    size: 200,
+    color: 'red'
+})
