@@ -6,6 +6,7 @@ const alien = {
     enemy: false
 }
 
+//  Objects
 const op = new Proxy(alien, {
     get(target, prop) {
         console.log(`Getting prop '${prop}' from target...`)
@@ -31,12 +32,31 @@ const op = new Proxy(alien, {
     }
 })
 
+//  Functions
 const log = (text = '') => `Log: ${text}`
 
-const fp = new Proxy(log,{
+const fp = new Proxy(log, {
     apply(target, thisArg, argArray) {
         console.log('Applying log function...')
 
         return target.apply(thisArg, argArray).toUpperCase()
     }
 })
+
+//  Classes
+class Person {
+    constructor(name, age) {
+        this.name = name
+        this.age = age
+    }
+}
+
+const PersonProxy = new Proxy(Person, {
+    construct(target, args) {
+        console.log('Creating ...')
+
+        return new target(...args)
+    }
+})
+
+const p = new PersonProxy('Gimmy', 345)
