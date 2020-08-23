@@ -18,5 +18,15 @@ const op = new Proxy(alien,{
         } else {
             throw new Error(`No such field '${prop}' in target object!`)
         }
+    },
+    has(target, prop){
+        console.log(Object.keys(target))
+        const keys = Object.keys(target);
+        return keys.includes(prop + '')
+    },
+    deleteProperty(target, prop){
+        console.log(`Deleting '${prop}'...`)
+        delete target[prop]
+        return true
     }
 })
