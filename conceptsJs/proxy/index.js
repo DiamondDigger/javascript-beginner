@@ -8,28 +8,40 @@ const alien = {
 
 //  Objects
 const op = new Proxy(alien, {
-    get(target, prop) {
-        console.log(`Getting prop '${prop}' from target...`)
-        return target[prop]
+        get(target, prop) {
+            console.log(`Getting prop '${prop}' from target...`);
+
+            if (!(prop in target)) {
+               return prop
+                    .split('_')
+                    .map(p => target[p])
+                    .join(' ')
+            }
+            return target[prop]
     },
-    set(target, prop, value) {
-        if (prop in target) {
-            target[prop] = value;
-            console.log(`Successfully changed prop '${prop}' in target `)
-        } else {
-            throw new Error(`No such field '${prop}' in target object!`)
-        }
-    },
-    has(target, prop) {
-        console.log(Object.keys(target))
-        const keys = Object.keys(target);
-        return keys.includes(prop + '')
-    },
-    deleteProperty(target, prop) {
-        console.log(`Deleting '${prop}'...`)
-        delete target[prop]
-        return true
+    set(target, prop, value)
+{
+    if (prop in target) {
+        target[prop] = value;
+        console.log(`Successfully changed prop '${prop}' in target `)
+    } else {
+        // throw new Error(`No such field '${prop}' in target object!`)
     }
+}
+,
+has(target, prop)
+{
+    console.log(Object.keys(target))
+    const keys = Object.keys(target);
+    return keys.includes(prop + '')
+}
+,
+deleteProperty(target, prop)
+{
+    console.log(`Deleting '${prop}'...`)
+    delete target[prop]
+    return true
+}
 })
 
 //  Functions
@@ -55,7 +67,13 @@ const PersonProxy = new Proxy(Person, {
     construct(target, args) {
         console.log('Creating ...')
 
-        return new target(...args)
+        return new Proxy(new target(...args), {
+            get(t, prop) {
+                console.log(`Getting '${prop}'..`)
+
+                return t[prop]
+            }
+        })
     }
 })
 
