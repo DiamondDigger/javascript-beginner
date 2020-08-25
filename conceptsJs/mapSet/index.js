@@ -27,3 +27,41 @@ console.log(map.has('name'))
 console.log(`size: ${map.size}`)
 map.clear()
 console.log(map.size, map)
+
+for (let val of map.values()) {
+    console.log('val:', val)
+}
+
+for (let key of map.keys()) {
+    console.log('key:', key)
+}
+
+for (let [key, val] of map) {
+    console.log(`[key = ${key} , val = ${val}]`)
+}
+
+const arrayFromSpread = [...map]
+const array = Array.from(map)
+console.log(arrayFromSpread)
+const mapObj = Object.fromEntries(map.entries())
+console.log('mapObj', mapObj)
+
+
+const users = [
+    {name: 'Monica'},
+    {name: 'Henry'},
+    {name: 'Coulsen'}
+]
+
+const visits = new Map()
+
+visits
+    .set(users[0].name, new Date())
+    .set(users[1].name, new Date(new Date * 1000))
+    .set(users[2].name, new Date(new Date() * 3000))
+
+console.log(visits)
+
+function lastVisit(user){
+    return visits.get(user)
+}
