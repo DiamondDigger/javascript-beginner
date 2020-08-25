@@ -18,3 +18,8 @@ const amountOfYearsInJail = data.filter(person => person.role === 'prisoner').re
 }, 0)
 
 console.log(amountOfYearsInJail)
+
+const findDangerIntruder = data.find(person => person.danger)
+console.log(findDangerIntruder)
+const findIndexOfDangerIntruder = data.findIndex(person => person.danger)
+console.log(findIndexOfDangerIntruder)
