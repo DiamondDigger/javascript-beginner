@@ -18,7 +18,7 @@ function* numGen(n = 5) {
 const num = numGen(2)
 
 const iterator = {
-    gen(n = 5) {
+    [Symbol.iterator](n = 51) {
         let i = 0
         return {
             next() {
@@ -30,4 +30,14 @@ const iterator = {
             }
         }
     }
+}
+
+function* iter(n = 10){
+    for (let i = 0; i < n; i++) {
+        yield i
+    }
+}
+
+for(let i of iter(15)){
+    console.log(i)
 }
