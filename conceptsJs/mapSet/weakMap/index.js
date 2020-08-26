@@ -48,3 +48,22 @@ function cacheUser(user) {
 console.log(cacheUser(user1))
 console.log(cacheUser(user2))
 
+const map = new Map()
+map.set(user1, 'user1')
+console.log(map)
+user1 = {animal: 'Horse'}
+console.log(map)
+// user1 = null
+console.log(map )
+console.log(map.get(user1))
+console.log(map.has(user1))
+map.set(user1, 'another user1')
+for (let key of map.keys()){
+    console.log('map.keys():', key)
+}
+for (let value of map.values()) {
+    console.log('map.values():', value)
+}
+for (let [key, value] of map) {
+    console.log([key,value])
+}
