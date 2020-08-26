@@ -25,7 +25,7 @@ console.log('size:', map.size)
 map.delete('name')
 console.log(map.has('name'))
 console.log(`size: ${map.size}`)
-map.clear()
+// map.clear()
 console.log(map.size, map)
 
 for (let val of map.values()) {
@@ -41,7 +41,9 @@ for (let [key, val] of map) {
 }
 
 const arrayFromSpread = [...map]
+console.log('arrayFromSpread ', arrayFromSpread)
 const array = Array.from(map)
+console.log('array ', array)
 console.log(arrayFromSpread)
 const mapObj = Object.fromEntries(map.entries())
 console.log('mapObj', mapObj)

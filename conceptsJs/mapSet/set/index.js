@@ -15,8 +15,19 @@ console.log(setOfNums)
 console.log('Set size: ',setOfNums.size)
 console.log('Set keys:', setOfNums.keys())
 console.log('Set values:', setOfNums.values())
-
 for (let el of setOfNums) {
     console.log(el)
 }
 console.log('Set entries: ',setOfNums.entries())
+console.log('Clearing Set: ', setOfNums.clear())
+
+function uniqValues(array){
+    return [...new Set(array)]
+}
+
+// function uniqValues(array){
+//     return Array.from(new Set(array))
+// }
+
+
+console.log(uniqValues([1,1,1,2,0,4,5,3,3,2,5]))
