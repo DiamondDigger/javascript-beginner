@@ -38,3 +38,5 @@ const body = {
 }
 
 sendRequest('POST', requestUrl, body)
+    .then((data)=> console.log(data))
+    .catch((e) => console.error(e))
