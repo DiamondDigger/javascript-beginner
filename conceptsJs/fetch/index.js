@@ -1,23 +1,29 @@
 const requestUrl = 'https://jsonplaceholder.typicode.com/users'
 
-const xhr = new XMLHttpRequest()
 function sendRequest(method, url, body=null){
-    return fetch(url)
+    const headers = {
+        'Content-Type': 'application/json'
+    }
+    return fetch(url,{
+        method: method,
+        body: JSON.stringify(body),
+        headers: headers
+    })
         .then(response => {
            return response.json()
         })
 }
 
-sendRequest('GET', requestUrl)
-    .then((data) => console.log(data))
-    .catch((e) => console.error(e))
+// sendRequest('GET', requestUrl)
+//     .then((data) => console.log(data))
+//     .catch((e) => console.error(e))
 
 const body = {
     name: 'Linkoln',
     project: 'Siriuis',
-    id: 101
+    role: 'President'
 }
 
-// sendRequest('POST', requestUrl, body)
-//     .then((data)=> console.log(data))
-//     .catch((e) => console.error(e))
+sendRequest('POST', requestUrl, body)
+    .then((data)=> console.log(data))
+    .catch((e) => console.error(e))
