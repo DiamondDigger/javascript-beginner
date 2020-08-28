@@ -74,4 +74,20 @@ const nodes = document.querySelectorAll('div')
 console.log('nodes of divs: ',nodes)
 
 const arr = [...nodes]
+console.log('Array.isArray nodes:',Array.isArray(nodes))
+console.log('Array.isArray arr(after spread):',Array.isArray(arr))
+console.log(arr)
 arr.map((div)=> console.log('DIV: ',div))
+
+const [a,b,...others] = numbers
+console.log(a,b,others)
+
+const person ={
+    name: 'Kenny',
+    role: 'officer',
+    male: true,
+    age: 45
+}
+
+const {name, role,...rest} = person
+console.log(role, name , rest)
