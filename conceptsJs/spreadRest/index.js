@@ -69,3 +69,9 @@ function sum (a,b, ...rest) {
 
 console.log(sum(2, 5));
 console.log(sum(...numbers))
+
+const nodes = document.querySelectorAll('div')
+console.log('nodes of divs: ',nodes)
+
+const arr = [...nodes]
+arr.map((div)=> console.log('DIV: ',div))
