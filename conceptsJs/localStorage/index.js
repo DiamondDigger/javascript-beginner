@@ -16,4 +16,5 @@ console.log(person)
 
 // console.log('deleted from local storage',localStorage.removeItem('person'));
 
-console.log(localStorage.getItem('person'));
+console.log(localStorage.getItem('person'))
+console.log('clear local storage',localStorage.clear())
