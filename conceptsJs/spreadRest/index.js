@@ -89,5 +89,5 @@ const person ={
     age: 45
 }
 
-const {name, role,...rest} = person
-console.log(role, name , rest)
+const {name, age,...rest} = person
+console.log(name, age , rest)
