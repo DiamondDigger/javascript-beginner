@@ -16,7 +16,7 @@ const [anotherSum, sub = 'Value is undefined!', ...anotherOthers] = mathArray
 console.log(anotherSum, sub, anotherOthers)
 
 const maserati = {
-    country: 'Italy',
+    // country: 'Italy',
     year: 1987,
     engine: {
         type: 'V6',
@@ -28,9 +28,10 @@ const {country, year, engine:
     { type:
         engineType = 'undefined',
         volume: capacityOfOneCylinder = 'unknown'} } = maserati
+
 console.log('Maserati: ' ,country, year, engineType, capacityOfOneCylinder)
 
-function carInfo({engine: specs, year: birthday = 'unknown', country: home = 'cant find'}){
+function carInfo({engine: specs, year: birthday = 'unknown', country: home = 'cant find country of customer'}){
     console.log(specs, birthday, home)
 }
 
