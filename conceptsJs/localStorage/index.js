@@ -18,3 +18,9 @@ console.log(person)
 
 console.log(localStorage.getItem('person'))
 console.log('clear local storage',localStorage.clear())
+
+addEventListener('storage', event => {
+    console.log(event)
+})
+
+// window.onstorage = () => {}
