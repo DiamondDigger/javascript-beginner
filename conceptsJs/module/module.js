@@ -5,6 +5,12 @@ export function sum(a,b){
     return a+b
 }
 
-export function log(){
+export function logMessage(){
     console.log(privateMsg)
+}
+
+export default {
+    log(){
+        console.log('Greeting from module')
+    }
 }
